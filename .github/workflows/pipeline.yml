@@ -19,6 +19,8 @@ jobs:
         node-version: 18.x
         cache: 'npm'
     - name: Install project dependencies
-      run: npm ci
+      run: npm install
     - name: Run application's unit tests
-    - run: npm run test:unit
+      run: npm run test:unit
+    - name: Display softuni username
+      run: echo "nikolaidan1"
