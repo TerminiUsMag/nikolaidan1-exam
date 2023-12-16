@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-ci:
     runs-on: ubuntu-latest
     
     steps:
@@ -24,3 +24,13 @@ jobs:
       run: npm run test:unit
     - name: Display softuni username
       run: echo "nikolaidan1"
+      
+  deploy:
+    needs: build-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.My_Service_Id }}
+          api-key: ${{ secrets.MY_RENDER_API_KEY }}
