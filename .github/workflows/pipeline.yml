@@ -34,7 +34,6 @@ jobs:
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
-          wait-for-success: true
   
   run-ui-tests:
     needs: deploy
@@ -49,7 +48,7 @@ jobs:
           cache: 'npm'
       - name: Install project dependencies
         run: npm install
-      - name: Instal Playwright
+      - name: Install Playwright
         run: npx playwright install
       - name: Run UI tests
         run: npm run test:ui
